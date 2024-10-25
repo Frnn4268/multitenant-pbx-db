@@ -1,6 +1,6 @@
 const express = require('express');
 const dataRoutes = require('./routes/dataRoutes');
-const logger = require('./logger/logger');
+const logger = require('./logger/loggerServer');
 
 const app = express();
 const PORT = process.env.PORT || 4001;

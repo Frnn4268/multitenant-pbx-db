@@ -1,5 +1,6 @@
 require('dotenv').config();
 const mariadb = require('mariadb');
+const logger = require('../logger/loggerDb');
 
 const pool = mariadb.createPool({
   host: process.env.DB_HOST,
@@ -12,11 +13,11 @@ const pool = mariadb.createPool({
 
 pool.getConnection()
   .then(connection => {
-    console.log('Conexión a la base de datos establecida satisfactoriamente');
+    logger.info('Conexión a la base de datos establecida satisfactoriamente'); // Reemplaza console.log con logger.info
     connection.release();
   })
   .catch(err => {
-    console.error('Error al conectar a la base de datos:', err);
+    logger.error('Error al conectar a la base de datos:', err); // Reemplaza console.error con logger.error
   });
 
 module.exports = pool;
